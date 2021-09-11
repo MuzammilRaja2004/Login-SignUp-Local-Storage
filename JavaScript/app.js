@@ -10,8 +10,8 @@ const SignUp = () => {
     // Take A Data In Object
     const SignUpObject = {
         UserName: Username.value,
-        Password: Password.value,
         Email: Email.value,
+        Password: Password.value,
     }
 
 
@@ -45,11 +45,11 @@ const SignUp = () => {
     else if (Password.value == "") {
         alert("Password Is Required")
     }
-    else if (Password.length <= 8) {
-        alert("Password Is None Of These  ")
+    else if (Password.length <=  8) {
+        alert("Password Must Be 8 Character")
     }
     else {
-        alert("Your Are Sign Up SuccessFully")
+        alert(`${Username.value} Your Are Sign Up SuccessFully`)
     }
 
     // Remove Value From Input SignUp
@@ -73,38 +73,34 @@ const login = () => {
 
     var loginUserData = JSON.parse(localStorage.getItem("userdata"))
 
-    let check = false
+// Validation Conditions For Sign In Page
     for (var i = 0; i < loginUserData.length; i++) {
         if (loginUserData[i].Email === loginObj.Email && loginUserData[i].Password === loginObj.Password) {
-            check = true
+            window.location.href="home.html"
+        }
+        else if (Email.value == "") {
+            alert("Email Is Required")
+        }
+        else if (Password.value == "") {
+            alert("Password Is Required")
+        }
+        else {
+            alert("Your Email Or Password Is InCorrect")
         }
     }
 
-    // Validation Conditions For Sign In Page
-    if (Email.value == "") {
-        alert("Email Is Required")
-    }
-    else if (Password.value == "") {
-        alert("Password Is Required")
-    }
-+
-    else {
-    alert("You Are Sign In SuccessFully")
-}
+    // Remove Value From Input SignUp
+    Email.value = ""
+    Password.value = ""
 
-// Remove Styleing
-let label1 = document.getElementById('label1')
-label1.setAttribute("style", "top: 50%;")
+    // Remove Styleing
+    let label1 = document.getElementById('label1')
+    label1.setAttribute("style", "top: 50%;")
 
-let label2 = document.getElementById('label2')
-label2.setAttribute("style", "top: 50%;")
+    let label2 = document.getElementById('label2')
+    label2.setAttribute("style", "top: 50%;")
 
-// Remove Value From Input SignUp
-Email.value = ""
-Password.value = ""
-
-
-
+    
 }
 
 // Login Function
